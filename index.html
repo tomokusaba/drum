@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#dce0df" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="description"
+      content="An accessible, hands-on FM drum machine with custom synthesis and a 16-step sequencer."
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <title>DRUM / FM — browser drum machine</title>
+  </head>
+  <body>
+    <!--
+      THESIS: Shape percussive sounds directly, then put them into a visible 16-step groove; refuse the sample-browser arrangement.
+      OWN-WORLD: Cool machine-grey surfaces, ink-black typography, signal orange for hits, and cobalt for transport and focus.
+      STORY: Pick a voice, strike a pad, edit its FM shape, and watch the same voice move through the sequencer.
+      FIRST VIEWPORT: Transport and tempo above eight playable pads beside the selected voice's controls; the full-width 16-step pattern sits immediately below.
+      FORM: Operator's instrument panel, ranked first for an interactive music tool; direct control staging with pads, parameter bank, and timeline.
+    -->
+    <div id="app">
+      <a class="skip-link" href="#main">Skip to drum machine</a>
+      <header class="topbar">
+        <a class="wordmark" href="#main">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+          <span>DRUM<span class="slash"> / </span>FM</span>
+        </a>
+        <div class="transport">
+          <button class="transport-button play-button" id="play-button" type="button">
+            <span class="play-icon" aria-hidden="true"></span>
+            <span>Start pattern</span>
+          </button>
+          <button class="transport-button stop-button" id="stop-button" type="button" disabled>
+            <span class="stop-icon" aria-hidden="true"></span>
+            <span>Stop</span>
+          </button>
+          <div class="tempo-control">
+            <label for="tempo">Tempo</label>
+            <input id="tempo" type="range" min="60" max="180" value="110" step="1" />
+            <output id="tempo-value" for="tempo">110 <span>BPM</span></output>
+          </div>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="instrument-bench" aria-label="Play and shape drum sounds">
+          <div class="pad-section">
+            <div class="section-heading">
+              <h1>Play the machine</h1>
+              <p>Tap, click, or press the key shown on a pad</p>
+            </div>
+            <div class="pad-grid" id="pad-grid" aria-label="Drum pads"></div>
+          </div>
+          <section class="sound-section" aria-labelledby="sound-heading">
+            <div class="section-heading sound-heading">
+              <div>
+                <h2 id="sound-heading">Sound shape</h2>
+                <p id="selected-voice">Kick · two-operator FM</p>
+              </div>
+              <span class="operator-badge" aria-label="Two operators">OP <b>2</b></span>
+            </div>
+            <div class="parameter-grid" id="parameter-grid"></div>
+          </section>
+        </section>
+
+        <section class="sequencer-section" aria-labelledby="sequencer-heading">
+          <div class="sequencer-header">
+            <div class="section-heading">
+              <h2 id="sequencer-heading">Step sequencer</h2>
+              <p>16 steps · one bar · toggle any hit</p>
+            </div>
+            <div class="pattern-controls">
+              <label for="pattern-select">Pattern</label>
+              <select id="pattern-select">
+                <option value="A">A · Starter</option>
+                <option value="B">B · Half-time</option>
+                <option value="C">C · Pulse</option>
+                <option value="D">D · Empty</option>
+              </select>
+              <button class="clear-button" id="clear-pattern" type="button">Clear steps</button>
+            </div>
+          </div>
+          <div class="step-scroll" tabindex="0" aria-label="Scrollable 16-step pattern">
+            <div class="step-grid" id="step-grid"></div>
+          </div>
+          <div class="sequencer-footer">
+            <p>Live pads and the pattern play through the same FM engine.</p>
+            <p class="audio-status" id="audio-status" role="status" aria-live="polite">
+              Audio is off. Play a pad or start the pattern to enable sound.
+            </p>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <span>Two operators. Eight voices. Your groove.</span>
+        <span>Audio starts only after you play.</span>
+      </footer>
+      <div class="visually-hidden" id="live-announcer" aria-live="polite"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
