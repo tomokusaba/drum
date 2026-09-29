@@ -24,6 +24,7 @@ Segoe UI for interface copy, Bahnschrift Condensed for instrument headings and t
 
 - Use native buttons, selects, labels, and range inputs; controls have visible focus and a 44px minimum target where practical.
 - Pads are dark physical controls; the selected pad uses orange and a visible selection state, while a hit briefly adds an inset ring and presses the pad.
+- Arrange pads and sequencer lanes in ascending GM percussion-note order; show each pad's GM note/name and home-row trigger key.
 - Active sequencer steps use a blue fill, heavier border, yellow marker, and `aria-pressed`; beat positions use stronger cell borders and bold step numbers.
 - The playhead is an outline, independent of step-on color. Respect reduced-motion preferences.
 - Keep the sequencer horizontally scrollable on narrow screens, with a visible, labeled button for every instrument/step pair.

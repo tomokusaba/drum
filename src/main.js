@@ -55,7 +55,8 @@ function renderPads() {
     button.setAttribute("aria-current", String(instrument.id === selectedInstrument.id));
     button.innerHTML = `
       <span class="pad-name">${instrument.name}</span>
-      <span class="pad-meta"><span>VOICE ${String(INSTRUMENTS.indexOf(instrument) + 1).padStart(2, "0")}</span><kbd>${instrument.key}</kbd></span>
+      <span class="pad-gm-name">${instrument.gmName}</span>
+      <span class="pad-meta"><span>GM ${instrument.gmNote}</span><kbd>${instrument.key}</kbd></span>
       <span class="pad-meter" aria-hidden="true"></span>
     `;
     button.addEventListener("pointerdown", (event) => {
@@ -132,7 +133,7 @@ function renderSequencer() {
   for (const instrument of INSTRUMENTS) {
     const label = document.createElement("span");
     label.className = "step-label";
-    label.textContent = instrument.name;
+    label.innerHTML = `<span class="step-gm-note">${instrument.gmNote}</span><span>${instrument.name}</span>`;
     stepGrid.append(label);
 
     for (let step = 0; step < 16; step += 1) {

@@ -15,7 +15,8 @@ Use a current browser that supports AudioWorklet and serve the app from localhos
 
 ## Controls
 
-- Play the eight pads with pointer/touch, or use `Q W E R A S D F`.
+- The eight pads follow ascending GM percussion notes: 36 Bass Drum 1, 37 Side Stick, 38 Acoustic Snare, 39 Hand Clap, 42 Closed Hi-Hat, 45 Low Tom, 46 Open Hi-Hat, and 56 Cowbell.
+- Play them in that same order with pointer/multi-touch or the home-row keys `A S D F G H J K`. Each pad displays its GM note number, standard drum name, and keyboard key.
 - Select a pad to edit pitch, pitch fall, carrier and modulator ratios, FM amount, decay, and the noise layer.
 - Toggle 16th-note steps, choose one of four pattern slots, clear the current pattern, and set tempo from 60 to 180 BPM.
 - Touch can activate multiple pads concurrently. Each pad hit and sequenced hit uses the same timestamped FM engine.

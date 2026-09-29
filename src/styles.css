@@ -361,6 +361,21 @@ kbd {
   font-weight: 800;
 }
 
+.pad-gm-name {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  color: #d2d9d8;
+  font-size: 10px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pad[aria-current="true"] .pad-gm-name {
+  color: #35231f;
+}
+
 .pad-meta {
   display: flex;
   width: 100%;
@@ -548,7 +563,10 @@ kbd {
 }
 
 .step-label {
+  display: flex;
+  min-width: 0;
   justify-content: flex-start;
+  gap: 5px;
   overflow: hidden;
   padding-right: 5px;
   color: var(--ink);
@@ -556,6 +574,13 @@ kbd {
   font-size: 11px;
   font-weight: 800;
   white-space: nowrap;
+}
+
+.step-gm-note {
+  flex: 0 0 18px;
+  color: var(--blue-dark);
+  font-family: var(--mono);
+  font-size: 10px;
 }
 
 .step-cell {
@@ -780,12 +805,13 @@ kbd {
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 560px) {
   .pad-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    min-height: 379px;
   }
+}
 
+@media (max-width: 390px) {
   .parameter-grid {
     grid-template-columns: 1fr;
     min-height: 356px;
